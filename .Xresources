@@ -1,4 +1,4 @@
-URxvt.font: xft:Iosevka-Term:style=Light:size=14
+URxvt.font: xft:Iosevka-Term:style=Light:size=16
 
 !URxvt.font: xft:Fira-Code:style=Retina:size=14
 URxvt.scrollBar: false
