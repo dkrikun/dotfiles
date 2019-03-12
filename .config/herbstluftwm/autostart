@@ -20,7 +20,7 @@ Mod=Mod4
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 
-hc keybind $Mod-r close_or_remove
+hc keybind $Mod-c close_or_remove
 hc keybind $Mod-Shift-r remove
 
 hc keybind $Mod-Return spawn urxvt
@@ -81,8 +81,8 @@ hc keybind $Mod-p pseudotile toggle
 # I.e. if there are two windows within a frame, the grid layout is skipped.
 hc keybind $Mod-space                                                         \
             or , and . compare tags.focus.curframe_wcount = 2                 \
-                     . cycle_layout +1 vertical horizontal max vertical grid  \
-               , cycle_layout +1
+                     . cycle_layout +1 vertical max grid  \
+               , cycle_layout +1 vertical max
 
 # mouse
 hc mouseunbind --all
@@ -109,10 +109,9 @@ hc set frame_gap 10
 
 hc keybind $Mod-g cycle_value frame_gap 0 10 20 40
 
-hc keybind $Mod-x spawn toggle_compton.sh
-
-hc keybind $Mod-t spawn compton-trans -c 85
-hc keybind $Mod-Shift-t spawn compton-trans -c 100
+hc keybind $Mod-F12 spawn toggle_compton.sh
+hc keybind $Mod-F11 spawn compton-trans -c 85
+hc keybind $Mod-Shift-F11 spawn compton-trans -c 100
 
 hc attr theme.active.color orange
 hc attr theme.normal.color '#5c4459' #'#454545'
