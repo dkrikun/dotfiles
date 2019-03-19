@@ -23,7 +23,9 @@ hc keybind $Mod-Return spawn $script_dir/spawn_urxvt.sh
 hc keybind $Mod-Shift-Return spawn urxvt
 hc keybind $Mod-d spawn dmenu_run
 
-# basic movement
+hc keybind XF86MonBrightnessUp exec light -A 5
+hc keybind XF86MonBrightnessDown exec light -U 5
+
 # focusing clients
 hc keybind $Mod-h focus left
 hc keybind $Mod-j focus down
@@ -132,7 +134,7 @@ hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 hc set default_frame_layout 0
-#hc set focus_stealing_prevention 1
+hc set focus_stealing_prevention 1
 
 # rules
 hc unrule -F
