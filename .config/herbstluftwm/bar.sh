@@ -22,11 +22,13 @@ while read _; do
 
     mapfile -t focus < \
         <(hc list_monitors | awk '{ print $6 }' \
-            | sed 's/\[FOCUS\]/%{F#ff8c00}/')
+            | sed 's/\[FOCUS\]/%{F#ff8c00}/' \
+            | sed 's/\[LOCKED\]/%{F#ff1111}/')
 
     mapfile -t unfocus < \
         <(hc list_monitors | awk '{ print $6 }' \
-            | sed "s/\[FOCUS\]/%{F$foreground}/")
+            | sed "s/\[FOCUS\]/%{F$foreground}/" \
+            | sed "s/\[LOCKED\]/%{F$foreground}/")
 
     toolbar="%{r}%{A:reload:}R%{A} %{A:quit:}Q%{A} "
     echo -n "%{S1}%{c}${focus[0]}- ${tags[0]} -${unfocus[0]}"
