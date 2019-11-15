@@ -3,6 +3,7 @@
 hc lock
 
 script_dir=$HOME/.config/herbstluftwm
+. $HOME/.cache/wal/colors.sh
 
 xsetroot -solid '#5A8E3A'
 
@@ -22,8 +23,8 @@ hc keybind $Mod-Return spawn $script_dir/spawn_urxvt.sh
 hc keybind $Mod-Shift-Return spawn urxvt
 hc keybind $Mod-d spawn dmenu_run
 
-hc keybind XF86MonBrightnessUp exec light -A 5
-hc keybind XF86MonBrightnessDown exec light -U 5
+hc keybind XF86MonBrightnessUp exec xbacklight -inc 5
+hc keybind XF86MonBrightnessDown exec xbacklight -dec 5
 
 # focusing clients
 hc keybind $Mod-h focus left
@@ -111,6 +112,9 @@ hc keybind $Mod-F11 spawn $script_dir/toggle_compton.sh
 hc keybind $Mod-F12 spawn compton-trans -c 85
 hc keybind $Mod-Shift-F12 spawn compton-trans -c 100
 
+cache_dir=$HOME/.cache/herbsluftwm
+mkdir -p $cache_dir
+
 hc attr theme.active.color orange
 hc attr theme.normal.color '#5c4459' #'#454545'
 hc attr theme.urgent.color orange
@@ -144,15 +148,15 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
+hc set swap_monitors_to_get_tag 1
+hc set focus_stealing_prevention 1
+hc set focus_crosses_monitor_boundaries 1
+hc set auto_detect_monitors 1
+hc detect_monitors
+
+pkill -f bar; $script_dir/bar.sh &
 
 # unlock, just to be sure
 hc unlock
 hc emit_hook reload
 
-# find the panel
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" $monitor &
-done

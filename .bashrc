@@ -20,7 +20,7 @@ export PROMPT_COMMAND=_set_ps1
 
 
 # fd - cd to selected directory
-fd() {
+fcd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
@@ -40,7 +40,24 @@ function ranger-cd {
 # this binds Ctrl-O to ranger-cd:
 bind '"\C-o":"ranger-cd\C-m"'
 
+bind '"\C-p":"pwd\C-m"'
+
 . /usr/share/fzf/key-bindings.bash
 . /usr/share/fzf/completion.bash
+
+alias yamd=yadm
+
+function backup_rcs() {
+    yadm add -u && yadm commit -m "Update" && yadm push
+}
+
+function sea() {
+    local line
+    line=$(ag --nogroup "$@" | cut -d':' -f1,2 | \
+        fzf --preview-window=60% --preview='xxview {}')
+    if [ $line ]; then
+        vim ${line%:*} +${line#*:}
+    fi
+}
 
 export PATH="~/.local/bin:$PATH"
