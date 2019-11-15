@@ -7,6 +7,7 @@ font=Iosevka-Term:style=Oblique:pixelsize=18
 geometry=x${height}
 
 hc pad 0 $height
+hc pad 1 $height
 
 script_dir=$HOME/.config/herbsluftwm
 
@@ -28,7 +29,8 @@ while read _; do
             | sed "s/\[FOCUS\]/%{F$foreground}/")
 
     toolbar="%{r}%{A:reload:}R%{A} %{A:quit:}Q%{A} "
-    echo "%{S0}%{c}${focus[0]}- ${tags[0]} -${unfocus[0]}$toolbar"
+    echo -n "%{S1}%{c}${focus[0]}- ${tags[0]} -${unfocus[0]}"
+    echo "%{S0}%{c}${focus[1]}- ${tags[1]} -${unfocus[1]}"
 done |
     lemonbar -p \
         -f "${font}" \

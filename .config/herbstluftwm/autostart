@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+xrandr --output eDP-1 --right-of HDMI-2
+
 hc lock
 
 script_dir=$HOME/.config/herbstluftwm
@@ -43,6 +45,7 @@ hc keybind $Mod-u              split bottom  0.5
 hc keybind $Mod-o              split right   0.5
 hc keybind $Mod-i              split auto
 hc keybind $Mod-Control-space  split explode
+hc keybind $Mod-r              rotate
 
 # resizing frames
 resizestep=0.05
