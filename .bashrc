@@ -39,3 +39,8 @@ function ranger-cd {
 
 # this binds Ctrl-O to ranger-cd:
 bind '"\C-o":"ranger-cd\C-m"'
+
+. /usr/share/fzf/key-bindings.bash
+. /usr/share/fzf/completion.bash
+
+export PATH="~/.local/bin:$PATH"

@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 
 hc lock
-hc emit_hook reload
 
 script_dir=$HOME/.config/herbstluftwm
 
@@ -148,6 +147,7 @@ hc set tree_style '╾│ ├└╼─┐'
 
 # unlock, just to be sure
 hc unlock
+hc emit_hook reload
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
