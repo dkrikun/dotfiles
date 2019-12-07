@@ -60,4 +60,4 @@ function sea() {
     fi
 }
 
-export PATH="~/.local/bin:$PATH"
+export PATH="~/rcd:$PATH"

@@ -68,6 +68,9 @@ for i in ${!tag_names[@]} ; do
     fi
 done
 
+hc keybind $Mod-q use_previous
+hc keybind $Mod-w cycle_monitor
+
 # cycle through tags
 hc keybind $Mod-period use_index +1 --skip-visible
 hc keybind $Mod-comma  use_index -1 --skip-visible
