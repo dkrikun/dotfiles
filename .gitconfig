@@ -1,3 +1,5 @@
 [user]
 	email = krikun.daniel@gmail.com
 	name = Daniel Krikun
+[alias]
+	st = status -s

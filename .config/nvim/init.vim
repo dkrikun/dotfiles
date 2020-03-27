@@ -31,3 +31,6 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 set nohlsearch
 nnoremap <silent> <leader>h :set hlsearch!<CR>
+nnoremap <silent> <leader>u gUawe
+inoremap <silent> <C-U> <Esc>gUawea
+inoremap <silent> <C-L> <Esc>guawea

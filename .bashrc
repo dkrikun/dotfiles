@@ -39,7 +39,6 @@ function ranger-cd {
 
 # this binds Ctrl-O to ranger-cd:
 bind '"\C-o":"ranger-cd\C-m"'
-
 bind '"\C-p":"pwd\C-m"'
 
 . /usr/share/fzf/key-bindings.bash
@@ -60,4 +59,4 @@ function sea() {
     fi
 }
 
-export PATH="~/rcd:$PATH"
+export PATH="$HOME/rcd:$HOME/.local/bin:$PATH"
