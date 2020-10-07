@@ -24,6 +24,7 @@ set noswapfile
 set colorcolumn=80
 set showcmd
 set diffopt+=vertical
+set clipboard=unnamed
 
 set backspace=indent,eol,start
 set list
@@ -34,3 +35,10 @@ nnoremap <silent> <leader>h :set hlsearch!<CR>
 nnoremap <silent> <leader>u gUawe
 inoremap <silent> <C-U> <Esc>gUawea
 inoremap <silent> <C-L> <Esc>guawea
+nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <leader> :<C-u>FZF<CR>
+
+set makeprg=ninja
+
+call plug#begin('~/.vim/plugged')
+call plug#end()
