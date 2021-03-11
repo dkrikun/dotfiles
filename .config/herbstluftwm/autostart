@@ -15,6 +15,7 @@ hc keyunbind --all
 # keybindings
 Mod=Mod4
 
+
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 
@@ -115,9 +116,6 @@ hc set frame_gap 10
 hc keybind $Mod-F10 cycle_value frame_gap 0 10 20 40
 hc keybind $Mod-F11 spawn $script_dir/toggle_compton.sh
 
-hc keybind $Mod-F12 spawn compton-trans -c 85
-hc keybind $Mod-Shift-F12 spawn compton-trans -c 100
-
 cache_dir=$HOME/.cache/herbsluftwm
 mkdir -p $cache_dir
 
@@ -143,7 +141,6 @@ hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 0
 hc set mouse_recenter_gap 0
 hc set default_frame_layout 0
-hc set focus_stealing_prevention 1
 
 # rules
 hc unrule -F
@@ -154,7 +151,7 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
-hc set swap_monitors_to_get_tag 1
+hc set swap_monitors_to_get_tag 0
 hc set focus_stealing_prevention 1
 hc set focus_crosses_monitor_boundaries 1
 hc set auto_detect_monitors 1

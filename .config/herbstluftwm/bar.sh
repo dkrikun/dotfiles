@@ -32,8 +32,8 @@ while read _; do
 
     toolbar="%{r}%{A:reload:}R%{A} %{A:quit:}Q%{A} "
     if [ ${#tags[@]} -eq 2 ]; then
-        echo -n "%{S1}%{c}${focus[0]}- ${tags[0]} -${unfocus[0]}"
-        echo "%{S0}%{c}${focus[1]}- ${tags[1]} -${unfocus[1]}"
+        echo -n "%{S1}%{c}${focus[1]}- ${tags[1]} -${unfocus[1]}"
+        echo "%{S0}%{c}${focus[0]}- ${tags[0]} -${unfocus[0]}"
     else
         echo "%{S0}%{c}${focus[0]}- ${tags[0]} -${unfocus[0]}"
     fi

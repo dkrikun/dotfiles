@@ -61,3 +61,6 @@ function sea() {
 
 export PATH="$HOME/rcd:$HOME/.local/bin:$PATH"
 export ETH=enp0s31f6
+
+alias vi=nvim
+alias sudo='sudo '

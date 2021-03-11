@@ -1,6 +1,10 @@
-URxvt.font: xft:Iosevka Term:style=Oblique:size=16
+URxvt.font: xft:Iosevka Term:style=Oblique:size=16,\
+            xft:Alef:style=Regular:size=16
+
 !URxvt.font: 9x15
 
 !URxvt.font: xft:Fira-Code:style=Retina:size=14
 !URxvt.font: xft:monaco:size=10
 URxvt.scrollBar: false
+
+URxvt.perl-ext-common: default,bidi
