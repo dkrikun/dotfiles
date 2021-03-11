@@ -1,11 +1,22 @@
 #!/usr/bin/bash
 
-xrandr --output eDP-1 --right-of HDMI-2
+#wal --theme base16-atelier-estuary
+wal -l --theme base16-mexico
+#wal -R
+
+#xrandr --output eDP-1-1 --right-of HDMI-0
+xrandr --output HDMI-0 --same-as eDP-1-1
+#pkill -f keynav
+#nohup keynav & disown
+
+hc() {
+    herbstclient "$@"
+}
 
 hc lock
 
 script_dir=$HOME/.config/herbstluftwm
-. $HOME/.cache/wal/colors.sh
+#. $HOME/.cache/wal/colors.sh
 
 xsetroot -solid '#5A8E3A'
 
@@ -21,9 +32,9 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-c close_or_remove
 hc keybind $Mod-Shift-c remove
 
-hc keybind $Mod-Return spawn $script_dir/spawn_urxvt.sh
+hc keybind $Mod-Return spawn urxvt
 hc keybind $Mod-Shift-Return spawn urxvt
-hc keybind $Mod-d spawn dmenu_run
+hc keybind $Mod-d spawn rofi -show run
 
 hc keybind XF86MonBrightnessUp exec xbacklight -inc 5
 hc keybind XF86MonBrightnessDown exec xbacklight -dec 5
@@ -58,7 +69,9 @@ hc keybind $Mod-Control-l resize right +$resizestep
 tag_names=( {1..9} )
 tag_keys=( {1..9} 0 )
 
-hc rename default "${tag_names[0]}" || true
+
+hc rename default "${tag_names[0]}" >/dev/null 2>&1 || true
+
 for i in ${!tag_names[@]} ; do
     hc add "${tag_names[$i]}"
     key="${tag_keys[$i]}"
@@ -110,9 +123,11 @@ hc set always_show_frame 1
 
 hc set frame_bg_transparent 1
 hc set frame_transparent_width 0
-hc set frame_gap 10
+hc set frame_gap 4
 
-hc keybind $Mod-F10 cycle_value frame_gap 0 10 20 40
+hc keybind $Mod-F1 spawn xinput disable 12
+hc keybind $Mod-Shift-F1 spawn xinput enable 12
+hc keybind $Mod-F10 cycle_value frame_gap 0 4 8 16
 hc keybind $Mod-F11 spawn $script_dir/toggle_compton.sh
 
 hc keybind $Mod-F12 spawn compton-trans -c 85
@@ -160,9 +175,16 @@ hc set focus_crosses_monitor_boundaries 1
 hc set auto_detect_monitors 1
 hc detect_monitors
 
-pkill -f bar; $script_dir/bar.sh &
-
 # unlock, just to be sure
 hc unlock
 hc emit_hook reload
 
+# find the panel
+panel=~/.config/herbstluftwm/panel.sh
+[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+    # start it on each monitor
+    "$panel" $monitor &
+done
+
+#wal --theme base16-summerfruit

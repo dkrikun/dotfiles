@@ -8,3 +8,4 @@ else
     exec urxvt "$@"
 fi
 
+#exec x-terminal-emulator "$@"
